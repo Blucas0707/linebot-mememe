@@ -1,5 +1,10 @@
-from common.db.db_sqlite import db
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from ..config.config import config
+
+db = SQLAlchemy()
+
 class Task(db.Model):
     __tablename__ = 'task'
     id = db.Column(db.Integer, primary_key=True)
@@ -11,3 +16,16 @@ class Task(db.Model):
     def __init__(self, name, status):
         self.name = name
         self.status = status
+
+def create_app(config_name):
+    app = Flask(__name__)
+    app.config.from_object(config[config_name])
+    db.init_app(app)
+    with app.app_context():
+        db.create_all()
+
+    @app.route('/')
+    def index():
+        return 'welcome'
+
+    return app
