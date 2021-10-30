@@ -6,7 +6,7 @@
 
 # Spec
 ## request
-    see spec.md
+* see <a href="https://github.com/Blucas0707/Gogolook/blob/main/spec.md">spec.md</a>
 ## response
 ```
 ResponseStatusCode int
