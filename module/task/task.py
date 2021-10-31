@@ -58,7 +58,7 @@ def init_task(app):
                 event.reply_token,
                 TextSendMessage(text=resText)
             )
-        elif text[0] == "H":
+        elif text == "Help":
             resText = """開頭為M=>梗圖
                          開頭為T=>幹話"""
             line_bot_api.reply_message(
