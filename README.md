@@ -26,4 +26,4 @@ ex:
 ## Reference
 * https://www.maxlist.xyz/2019/11/10/flask-sqlalchemy-setting/
 * https://www.maxlist.xyz/2019/10/30/flask-sqlalchemy/
-* https://flask.palletsprojects.com/en/2.0.x/patterns/sqlite3/
+* https://flask.palletsprojects.com/en/2.0.x/patterns/sqlite3/# linebot-mememe
