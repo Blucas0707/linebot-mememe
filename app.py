@@ -1,6 +1,6 @@
 #coding=UTF-8 
 from module.task.task import init_task
-from common.init.init import create_app, db
+from common.init.init import create_app
 app = create_app("development")
 
 init_task(app)

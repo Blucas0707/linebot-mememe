@@ -1,19 +1,20 @@
-from module.task.handler.task_handler import handler as task_handler
-from flask import Flask, request, abort
+from flask import request, abort
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
-from linebot.models import MessageEvent, TextMessage, TextSendMessage
-from dotenv import dotenv_values
+from linebot.models import MessageEvent, TextMessage, TextSendMessage, ImageMessage, ImageSendMessage
+from module.task.getimage import findMemeImage
 
-#load .env config
-# config = dotenv_values(".env")
-LINEBOT_CHANNEL_ACCESS_TOKEN="BTZp8SjZNwsLvN3ryN6qA9+iw0FTNqrt0wceAGxw4e/D+NGX5kSxvjrOCY7lOCuoRYWfo90N39zYXAA7gsDYvebYI+CiADIRpEbjUL0sS6Kj7NmQIU3Reb62hIu2/+dhee+u2MGfev+LBKznetu8vgdB04t89/1O/w1cDnyilFU="
-LINEBOT_CHANNEL_SECRET="a97c765c954b3b2d8c86aa3ebf3b479a"
+from dotenv import load_dotenv
+import os
+load_dotenv()
+
+LINEBOT_CHANNEL_ACCESS_TOKEN = os.environ.get("LINEBOT_CHANNEL_ACCESS_TOKEN")
+LINEBOT_CHANNEL_SECRET = os.environ.get("LINEBOT_CHANNEL_SECRET")
+
 line_bot_api = LineBotApi(LINEBOT_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(LINEBOT_CHANNEL_SECRET)
 
 def init_task(app):
-
     # get Line 
     @app.route("/callback", methods=["POST"])
     def callback():
@@ -30,42 +31,21 @@ def init_task(app):
             abort(400)
 
         return 'OK'
-    # 學你說話
+    # meme Image
     @handler.add(MessageEvent, message=TextMessage)
-    def pretty_echo(event):
-        
-        if event.source.user_id != "Udeadbeefdeadbeefdeadbeefdeadbeef":
+    def memeImage(event):
+        text = event.message.text
+        if text[0] == "M":
+            keyword = text[1:]
             
-            # Phoebe 愛唱歌
-            pretty_note = '♫♪♬'
-            pretty_text = ''
-            
-            for i in event.message.text:
-            
-                pretty_text += i
-                pretty_text += random.choice(pretty_note)
-        
+            MemeImageUrl = findMemeImage(keyword)
+            print(MemeImageUrl)
+            imageMsg = ImageSendMessage(
+                original_content_url=MemeImageUrl,
+                preview_image_url=MemeImageUrl
+            )
+
             line_bot_api.reply_message(
                 event.reply_token,
-                TextSendMessage(text=pretty_text)
+                imageMsg
             )
-    
-    ### 1.  GET /tasks (list tasks)
-    @app.route("/tasks", methods = ["GET"])
-    def getTaskList():
-        return task_handler.getTaskList()
-
-    ### 2.  POST /task  (create task)
-    @app.route("/task", methods = ["POST"])
-    def createTask():
-        return task_handler.createTask()
-
-    ### 3. PUT /task/<id> (update task)
-    @app.route("/task/<id>", methods = ["PUT"])
-    def updateTaskId(id):
-        return task_handler.updateTaskId(id)
-
-    ### 4. DELETE /task/<id> (delete task)
-    @app.route("/task/<id>", methods = ["DELETE"])
-    def deleteTaskId(id):
-        return task_handler.deleteTaskId(id)
