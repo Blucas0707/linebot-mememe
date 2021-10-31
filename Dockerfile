@@ -1,9 +1,11 @@
 # syntax=docker/dockerfile:1
 
 # Build stage
-FROM python as build
+FROM python:3.9-slim as build
 # Update
-RUN apt-get update & apk --no-cache
+RUN apt-get update
+# Allow statements and log messages to immediately appear in the Knative logs
+ENV PYTHONUNBUFFERED True
 # Assign work directory
 WORKDIR /mememe
 # Copy root directory to container
