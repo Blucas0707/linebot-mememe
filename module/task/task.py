@@ -53,5 +53,5 @@ def init_task(app):
             resText = "??等我學會幹話，就嗆爆你"
             line_bot_api.reply_message(
                 event.reply_token,
-                resText
+                TextSendMessage(text=resText)
             )
