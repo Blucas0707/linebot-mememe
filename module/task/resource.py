@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+from module.task.trashtalk import trashtalk
 
 def findMemeImage(keyword= ""):
     googleImageUrl = "https://www.google.co.in/search?q=" +"Meme "+ keyword +"&source=lnms&tbm=isch"
@@ -16,5 +17,6 @@ def findMemeImage(keyword= ""):
         return firstimageUrl
     else:
         return "http://memenow.cc/wp-content/uploads/2020/04/20200409_5e8ea59dc8fd9.jpg"
-
-# findMemeImage("Meme")
+        
+def findTrachTalk(id):
+    return trashtalk[id]

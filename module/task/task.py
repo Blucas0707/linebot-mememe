@@ -2,7 +2,8 @@ from flask import request, abort
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage, ImageMessage, ImageSendMessage
-from module.task.getimage import findMemeImage
+from module.task.resource import findMemeImage, findTrachTalk
+import random
 
 from dotenv import load_dotenv
 import os
@@ -50,7 +51,9 @@ def init_task(app):
                 imageMsg
             )
         else:
-            resText = "??等我學會幹話，就嗆爆你"
+            id = random.randint(1,86)
+            trashTalkMsg = findTrachTalk(id)
+            resText = "幹話語錄#" +str(id)+"-"+ trashTalkMsg
             line_bot_api.reply_message(
                 event.reply_token,
                 TextSendMessage(text=resText)
