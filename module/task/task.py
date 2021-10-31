@@ -49,3 +49,9 @@ def init_task(app):
                 event.reply_token,
                 imageMsg
             )
+        else:
+            resText = "??等我學會幹話，就嗆爆你"
+            line_bot_api.reply_message(
+                event.reply_token,
+                resText
+            )
