@@ -50,7 +50,7 @@ def init_task(app):
                 event.reply_token,
                 imageMsg
             )
-        else:
+        elif text[0] == "T":
             id = random.randint(1,86)
             trashTalkMsg = findTrachTalk(id)
             resText = "幹話語錄#" +str(id)+"-"+ trashTalkMsg
