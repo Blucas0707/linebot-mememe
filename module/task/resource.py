@@ -1,8 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 import random
-from trashtalk import trashtalk
-from positivetalk import positivetalk
+from module.task.trashtalk import trashtalk
+from module.task.positivetalk import positivetalk
 
 def findMemeImage(keyword= ""):
     googleImageUrl = "https://www.google.co.in/search?q=" +"Meme "+ keyword +"&source=lnms&tbm=isch"
