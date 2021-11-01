@@ -65,6 +65,7 @@ def init_task(app):
             line_bot_api.reply_message(event.reply_token,
                                        TextSendMessage(text=resText))
         elif text == "Help":
-            resText = """開頭為M=>梗圖;開頭為T=>幹話"""
+            # resText = """開頭為M+關鍵字=>梗圖;開頭為T=>幹話;開頭為P=>勵志;Help=>說明"""
+            resText = "開頭為M+關鍵字=>梗圖;\n" + "開頭為T=>幹話;\n" + "開頭為P=>勵志;\n" + "Help=>說明\n"
             line_bot_api.reply_message(event.reply_token,
                                        TextSendMessage(text=resText))
