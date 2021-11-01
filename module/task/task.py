@@ -50,6 +50,7 @@ def init_task(app):
                                         preview_image_url=MemeImageUrl)
 
             line_bot_api.reply_message(event.reply_token, imageMsg)
+            
         # trash talk
         elif text[0] == "T":
             id, trashTalkMsg = findTrachTalk()
