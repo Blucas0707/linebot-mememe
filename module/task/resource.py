@@ -14,6 +14,7 @@ def findMemeImage(keyword= ""):
     images = soup.find_all("img", {"class":"Q4LuWd"})
     # showimages(images)
     firstimageUrl = getFirstImageUrl(images)
+    print(firstimageUrl)
     if req.status_code == 200:
         return firstimageUrl
     else:
