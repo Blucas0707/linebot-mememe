@@ -9,14 +9,11 @@ def findMemeImage(keyword= ""):
     print(googleImageUrl)
     headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36"}
     req = requests.get(googleImageUrl, headers=headers)
-    # print(req)
     req.encoding = "utf-8"
-    soup = BeautifulSoup(req.text, "html.parser")
-    # print(soup.prettify())
+    soup = BeautifulSoup(req.text, "lxml")
     images = soup.find_all("img", {"class":"Q4LuWd"})
     # showimages(images)
     firstimageUrl = getFirstImageUrl(images)
-    print(firstimageUrl)
     if req.status_code == 200:
         return firstimageUrl
     else:
@@ -34,7 +31,8 @@ def findPositiveTalk():
 
 def showimages(images):
     for image in images:
-        print(image.get("data-src"),"\n")
+        print(image,"\n")
+        # print(image.get("data-src"),"\n")
 
 def getFirstImageUrl(images):
     for image in images:
@@ -43,10 +41,6 @@ def getFirstImageUrl(images):
 
 def showtalk():
     print(trashtalk)
-
-# showtalk()
-
-# findMemeImage("問號")
 
 if __name__ == "__main__":
     findMemeImage("問號")
