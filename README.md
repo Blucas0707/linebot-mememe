@@ -4,5 +4,8 @@
 * Framework: Python + flask
 * Cloud: GCP Cloud run
 * 說明：
-    開頭為M=>梗圖;開頭為T =>幹話;只有Help =>說明
+    * M+關鍵字 = 關鍵字梗圖
+    * T = 幹話
+    * P = 勵志
+    * Help = 說明
 
