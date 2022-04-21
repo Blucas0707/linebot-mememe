@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # Build stage
-FROM python:3.9-slim as build
+FROM python:3.10-slim as build
 # Update
 RUN apt-get update
 # Allow statements and log messages to immediately appear in the Knative logs
