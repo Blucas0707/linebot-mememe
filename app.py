@@ -1,4 +1,3 @@
-#coding=UTF-8 
 from module.task.task import init_task
 from common.init.init import create_app
 import os
