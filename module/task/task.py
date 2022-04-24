@@ -14,7 +14,7 @@ load_dotenv()
 
 LINEBOT_CHANNEL_ACCESS_TOKEN = os.environ.get("LINEBOT_CHANNEL_ACCESS_TOKEN")
 LINEBOT_CHANNEL_SECRET = os.environ.get("LINEBOT_CHANNEL_SECRET")
-print(LINEBOT_CHANNEL_ACCESS_TOKEN, LINEBOT_CHANNEL_SECRET)
+
 line_bot_api = LineBotApi(LINEBOT_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(LINEBOT_CHANNEL_SECRET)
 
@@ -29,7 +29,6 @@ def init_task(app):
         app.logger.info("Request body: " + body)
 
         try:
-            print(body, signature)
             handler.handle(body, signature)
 
         except InvalidSignatureError:
@@ -47,7 +46,6 @@ def init_task(app):
             keyword = text[1:]
 
             MemeImageUrl = findMemeImage(keyword)
-            print(MemeImageUrl)
             imageMsg = ImageSendMessage(original_content_url=MemeImageUrl,
                                         preview_image_url=MemeImageUrl)
 

@@ -24,8 +24,7 @@ class Crawler:
                 newsentence = sentence.text.strip().split("、")[1].strip()
                 newdict[index] = newsentence
                 index += 1
-                print(newsentence, "\n")
-        print(newdict)
+
 
 # webUrl = "https://mingyanjiaju.org/juzi/jingdianduanju/2012/0414/288.html"
 # crawler = Crawler(webUrl)
