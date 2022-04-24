@@ -1,5 +1,6 @@
 
-import base64 
+import base64
+
 url = """R0lGODlhMwAxAIAAAAAAAP///
 
 yH5BAAAAAAALAAAAAAzADEAAAK8jI+pBr0PowytzotTtbm/DTqQ6C3hGX

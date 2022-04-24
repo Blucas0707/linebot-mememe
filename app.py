@@ -1,6 +1,8 @@
+import os
+
 from module.task.task import init_task
 from common.init.init import create_app
-import os
+
 app = create_app("development")
 
 init_task(app)

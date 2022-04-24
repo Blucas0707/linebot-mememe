@@ -1,5 +1,6 @@
-from flask import Flask
 from datetime import datetime
+
+from flask import Flask
 
 def create_app(config_name):
     app = Flask(__name__)

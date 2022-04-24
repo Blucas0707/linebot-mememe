@@ -1,12 +1,14 @@
+import os
+import random
+
+from dotenv import load_dotenv
 from flask import request, abort
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage, ImageMessage, ImageSendMessage
-from module.task.resource import findMemeImage, findTrachTalk, findPositiveTalk
-import random
 
-from dotenv import load_dotenv
-import os
+from module.task.resource import findMemeImage, findTrachTalk, findPositiveTalk
+
 
 load_dotenv()
 
@@ -50,7 +52,7 @@ def init_task(app):
                                         preview_image_url=MemeImageUrl)
 
             line_bot_api.reply_message(event.reply_token, imageMsg)
-            
+
         # trash talk
         elif text[0] == "T":
             id, trashTalkMsg = findTrachTalk()

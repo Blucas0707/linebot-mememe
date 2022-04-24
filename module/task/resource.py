@@ -1,6 +1,8 @@
 import requests
-from bs4 import BeautifulSoup
 import random
+
+from bs4 import BeautifulSoup
+
 from module.task.trashtalk import trashtalk
 from module.task.positivetalk import positivetalk
 
@@ -19,7 +21,7 @@ def findMemeImage(keyword= ""):
         return firstimageUrl
     else:
         return "http://memenow.cc/wp-content/uploads/2020/04/20200409_5e8ea59dc8fd9.jpg"
-        
+
 def findTrachTalk():
     totalNumber = len(trashtalk)
     id = random.randint(1,totalNumber)

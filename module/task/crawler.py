@@ -1,4 +1,5 @@
 import requests
+
 from bs4 import BeautifulSoup
 
 
@@ -13,7 +14,7 @@ class Crawler:
         req.encoding = "utf-8"
         soup = BeautifulSoup(req.text, "html.parser")
         self.soup = soup
-    
+
     def dataHandle(self):
         newdict = dict()
         index = 282
@@ -30,5 +31,3 @@ class Crawler:
 # crawler = Crawler(webUrl)
 # crawler.getWebcontent()
 # crawler.dataHandle()
-
-
